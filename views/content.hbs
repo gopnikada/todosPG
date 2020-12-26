@@ -1,5 +1,5 @@
 <div class="container">
-    <button type="button" class="btn btn-primary addbtn">Add Todo</button>
+    <button type="button" class="btn btn-primary addbtn" data-toggle="modal" data-target="#formModal">Add</button>
     <br>
     {{#each todos}}
         <div class="container-fluid cont d-flex justify-content-center">
@@ -8,4 +8,28 @@
             </button></h4>
         </div>
     {{/each}}
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="/add">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add todo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>New Todo text</label>
+                            <input type="text" class="form-control" name="todoInputText"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

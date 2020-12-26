@@ -53,4 +53,16 @@ app.get('/', async (req,res)=>{
     })
 })
 
+//add todos
+app.post('/add', (req,res)=>{
+    pool.connect((err, client, done)=>{
+        if(err) return console.error(err)
+
+        client.query('INSERT INTO todos (text) values ($1) returning *', [req.body.todoInputText])
+        done()
+        res.redirect("/")
+    })
+    }
+)
+
 app.listen(3000)
