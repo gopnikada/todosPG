@@ -18,7 +18,7 @@ app.engine('hbs', exhbs({
 }))
 
 //public folder
-app.use(express.static(path.join(__dirname + 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 //body parser middleware
 app.use(bodyParser.json())
@@ -33,11 +33,24 @@ const pool = new Pool({
     port: 5432,
 })
 
-//getAllTodos
-
-app.get('/', (req,res)=>{
-    pool.on('error', (err, client)=>{
+//get All Todos
+app.get('/', async (req,res)=>{
+    pool.on('error', (err)=>{
         console.error(err)
         process.exit(-1)
     })
+    pool.connect((err, client, done)=>{
+        if ( err ) throw err
+        client.query('SELECT * FROM todos', (err, result)=>{
+            done()
+            if (err){
+                console.log(err.stack)
+            }else{
+                console.log('connected')
+                res.render('content', {layout: 'mainLayout', todos: result.rows})
+            }
+        })
+    })
 })
+
+app.listen(3000)

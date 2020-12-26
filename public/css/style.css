@@ -1,0 +1,21 @@
+body{
+    margin-top: 10px;
+    background: #f9f9f9;
+}
+.cont{
+    text-align: center;
+    /*display: flex;*/
+    background-color: #d1d9d9;
+    width: 45%;
+    /*justify-content: center;*/
+    margin-bottom: 5%;
+    padding: 3%;
+}
+/*.cont h4{*/
+/*    text-align: center;*/
+/*}*/
+.addbtn{
+    margin-left: 45%;
+
+    text-align: left;
+}
