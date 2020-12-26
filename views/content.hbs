@@ -3,9 +3,13 @@
     <br>
     {{#each todos}}
         <div class="container-fluid cont d-flex justify-content-center">
-            <h4>{{text}} <button type="button" class="btn btn-success"  class="btn btn-primary" data-toggle="collapse" href="#recipe_{{id}}" role="button" aria-expanded="false" aria-controls="recipe_{{id}}">
+            <h4>{{id}} - {{text}}
+                <button type="button" class="btn btn-success"  class="btn btn-primary" data-toggle="collapse" href="#recipe_{{id}}" role="button" aria-expanded="false" aria-controls="recipe_{{id}}">
                 <i class="fa fa-sort-desc" aria-hidden="true"></i>
-            </button></h4>
+                </button>
+                <button type="button" class="btn btn-danger delete-todo" data-id="{{id}}" style="width: 100px">Delete</button>
+            </h4>
+
         </div>
     {{/each}}
     <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">

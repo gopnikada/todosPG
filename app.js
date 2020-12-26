@@ -65,4 +65,15 @@ app.post('/add', (req,res)=>{
     }
 )
 
+//delete todo
+app.delete('/delete/:id', (req,res)=>{
+    pool.connect((err,client, done)=>{
+        if(err) return console.error(err)
+
+        client.query('DELETE FROM todos WHERE id=$1 returning *', [req.params.id])
+        done()
+        res.sendStatus(200)
+    })
+})
+
 app.listen(3000)
